@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PulseNet — Modern Social Media Platform for Interns and Developers. Share project logs, build connections, and showcase your work.">
+  <meta name="keywords" content="social media, internship, portfolio, developer network, express, html, css, javascript">
+  <title>PulseNet — Internship Social Platform</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- App Wrapper Grid -->
+  <div class="app-container">
+
+    <!-- ========================================================= -->
+    <!-- LEFT SIDEBAR                                              -->
+    <!-- ========================================================= -->
+    <aside class="sidebar-left">
+      <div>
+        <!-- Brand -->
+        <a class="brand-wrapper" onclick="PulseApp.navigateToView('home')">
+          <div class="brand-logo">⚡</div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="brand-text">PulseNet</span>
+              <span class="brand-badge">INTERN</span>
+            </div>
+            <span style="font-size: 11px; color: var(--text-muted);">Social Media Platform</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+          <a class="nav-item active" data-view="home" onclick="PulseApp.navigateToView('home')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home Feed</span>
+          </a>
+
+          <a class="nav-item" data-view="explore" onclick="PulseApp.navigateToView('explore')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            <span>Explore & Search</span>
+          </a>
+
+          <a class="nav-item" data-view="profile" onclick="PulseApp.navigateToProfile()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>My Profile</span>
+          </a>
+        </nav>
+
+        <!-- CTA Post Button -->
+        <button class="btn-sidebar-create" onclick="PulseApp.navigateToView('home'); document.getElementById('create-post-content').focus();">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>Share Update</span>
+        </button>
+      </div>
+
+      <!-- Current User Footer Card -->
+      <div class="current-user-card" onclick="PulseApp.navigateToProfile()">
+        <img class="user-avatar-sm current-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Current User" />
+        <div class="user-meta-info">
+          <span class="user-name-title" id="sidebar-current-name">Alex Rivera</span>
+          <span class="user-handle-title" id="sidebar-current-handle">@alex_dev</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ========================================================= -->
+    <!-- MAIN CONTENT VIEW AREA                                    -->
+    <!-- ========================================================= -->
+    <main class="main-content">
+
+      <!-- ------------------------------------------------------- -->
+      <!-- VIEW 1: HOME FEED                                       -->
+      <!-- ------------------------------------------------------- -->
+      <section id="home-view" style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Feed Top Filter Bar -->
+        <div class="feed-header-bar">
+          <div class="feed-tabs">
+            <button class="feed-tab-btn active" data-filter="all" onclick="PulseApp.setFeedFilter('all')">
+              For You
+            </button>
+            <button class="feed-tab-btn" data-filter="following" onclick="PulseApp.setFeedFilter('following')">
+              Following
+            </button>
+            <button class="feed-tab-btn" data-filter="trending" onclick="PulseApp.setFeedFilter('trending')">
+              🔥 Trending
+            </button>
+          </div>
+
+          <!-- Dark/Light Theme Toggle -->
+          <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode" onclick="PulseApp.toggleTheme()">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </div>
+
+        <!-- Create Post Card -->
+        <section class="create-post-card" aria-label="Create a post">
+          <div class="create-post-top">
+            <img class="user-avatar-sm current-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Current user avatar" />
+            <textarea id="create-post-content" 
+                      class="create-post-textarea" 
+                      placeholder="What are you building this week? Share an internship win, tip, or ask a question..."></textarea>
+          </div>
+
+          <!-- Optional Image URL Input Section -->
+          <div class="image-url-input-container" id="image-url-input-container">
+            <input type="url" id="input-post-image-url" placeholder="Paste image link (e.g. https://...)" />
+            <button type="button" class="btn-apply-image" id="btn-apply-image-url">Preview</button>
+          </div>
+
+          <!-- Image Preview Area -->
+          <div class="post-media-preview-box" id="post-media-preview-box">
+            <button type="button" class="btn-remove-media" id="btn-remove-preview-image" title="Remove image">✕</button>
+            <img id="post-preview-img" src="" alt="Media preview" />
+          </div>
+
+          <!-- Bottom Tools & Submit Bar -->
+          <div class="create-post-tools">
+            <div class="post-tool-buttons">
+              <!-- Add Media Button -->
+              <button type="button" class="tool-action-btn" id="btn-toggle-media-input" title="Attach Image URL">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span>Image</span>
+              </button>
+
+              <!-- Topic Tag Selector -->
+              <select class="tag-select" id="create-post-tag-select">
+                <option value="">Select Tag (Optional)</option>
+                <option value="#Engineering">#Engineering</option>
+                <option value="#ArtificialIntelligence">#ArtificialIntelligence</option>
+                <option value="#DesignSystem">#DesignSystem</option>
+                <option value="#DevOps">#DevOps</option>
+                <option value="#CareerAdvice">#CareerAdvice</option>
+                <option value="#Showcase">#Showcase</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn-publish-post" id="btn-submit-post" onclick="PulseApp.handleCreatePost()">
+              Post
+            </button>
+          </div>
+        </section>
+
+        <!-- Dynamic Feed Stream -->
+        <section class="feed-container" id="feed-posts-stream" aria-label="Social feed"></section>
+      </section>
+
+      <!-- ------------------------------------------------------- -->
+      <!-- VIEW 2: PROFILE VIEW                                    -->
+      <!-- ------------------------------------------------------- -->
+      <section id="profile-view" style="display: none; flex-direction: column; gap: 20px;">
+        <div id="profile-view-container"></div>
+      </section>
+
+      <!-- ------------------------------------------------------- -->
+      <!-- VIEW 3: EXPLORE & SEARCH RESULTS                        -->
+      <!-- ------------------------------------------------------- -->
+      <section id="explore-view" style="display: none; flex-direction: column; gap: 20px;">
+        <div class="feed-header-bar">
+          <h2 style="font-size: 18px; font-weight: 800;">Explore PulseNet</h2>
+          <span style="font-size: 13px; color: var(--text-muted);">Discover interns, topics & projects</span>
+        </div>
+        <div id="explore-results-stream"></div>
+      </section>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- RIGHT SIDEBAR (WIDGETS & SEARCH)                          -->
+    <!-- ========================================================= -->
+    <aside class="sidebar-right">
+      <!-- Search Input Widget -->
+      <div class="search-widget-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="global-search-input" placeholder="Search interns, posts, tags..." />
+      </div>
+
+      <!-- Quick User Switcher (For testing multi-user follows & likes!) -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <span>Demo User Switcher</span>
+          <span class="widget-title-badge">Testing</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">
+          Switch active user to test follows, likes, and comment threads from different accounts!
+        </p>
+        <div class="switch-user-list" id="switch-user-container"></div>
+      </div>
+
+      <!-- Who to Follow Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <span>Who to Follow</span>
+          <span class="widget-title-badge">Connect</span>
+        </div>
+        <div class="suggested-users-list" id="suggested-users-container"></div>
+      </div>
+
+      <!-- Trending Topics Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <span>Trending in Tech</span>
+          <span class="widget-title-badge">Live</span>
+        </div>
+        <div class="trending-topics-list">
+          <div class="trending-item" onclick="PulseApp.filterByTag('#Engineering')">
+            <span class="trending-tag">#Engineering</span>
+            <span class="trending-count">1.4k posts</span>
+          </div>
+          <div class="trending-item" onclick="PulseApp.filterByTag('#ArtificialIntelligence')">
+            <span class="trending-tag">#ArtificialIntelligence</span>
+            <span class="trending-count">2.8k posts</span>
+          </div>
+          <div class="trending-item" onclick="PulseApp.filterByTag('#DesignSystem')">
+            <span class="trending-tag">#DesignSystem</span>
+            <span class="trending-count">850 posts</span>
+          </div>
+          <div class="trending-item" onclick="PulseApp.filterByTag('#DevOps')">
+            <span class="trending-tag">#DevOps</span>
+            <span class="trending-count">620 posts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship Task Badge -->
+      <div class="internship-banner">
+        <div class="internship-banner-title">
+          <span>🎓 Task 2: Social Media Platform</span>
+        </div>
+        <p class="internship-banner-desc">
+          Implemented: User Profiles, Posts & Comments, and Like/Follow System with Express.js REST backend and SQLite schema.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- MOBILE BOTTOM NAV BAR                                     -->
+  <!-- ========================================================= -->
+  <nav class="mobile-bottom-nav">
+    <button class="action-btn" onclick="PulseApp.navigateToView('home')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+    </button>
+    <button class="action-btn" onclick="PulseApp.navigateToView('explore')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+    </button>
+    <button class="action-btn" onclick="PulseApp.navigateToProfile()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    </button>
+    <button class="action-btn" onclick="PulseApp.toggleTheme()">
+      <span>🌓</span>
+    </button>
+  </nav>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: EDIT PROFILE                                       -->
+  <!-- ========================================================= -->
+  <div class="modal-overlay" id="edit-profile-modal">
+    <div class="modal-content animate-scale-in">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Your Profile</h3>
+        <button class="btn-close-modal" onclick="PulseApp.closeEditProfileModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="edit-name">Display Name</label>
+          <input type="text" id="edit-name" placeholder="Your full name" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-role">Internship Role</label>
+          <input type="text" id="edit-role" placeholder="e.g. Frontend Engineering Intern" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-company">Company / University</label>
+          <input type="text" id="edit-company" placeholder="e.g. FinTech Innovations" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-bio">Bio</label>
+          <textarea id="edit-bio" rows="3" placeholder="Tell the community about your projects and interests..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-location">Location</label>
+          <input type="text" id="edit-location" placeholder="e.g. San Francisco, CA" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-website">Portfolio / GitHub Website</label>
+          <input type="url" id="edit-website" placeholder="https://..." />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-avatar">Avatar Image URL</label>
+          <input type="url" id="edit-avatar" placeholder="https://..." />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-banner">Profile Banner Image URL</label>
+          <input type="url" id="edit-banner" placeholder="https://..." />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="PulseApp.closeEditProfileModal()">Cancel</button>
+        <button class="btn-primary" onclick="PulseApp.handleSaveProfile()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: IMAGE LIGHTBOX                                     -->
+  <!-- ========================================================= -->
+  <div class="modal-overlay" id="image-lightbox-modal" onclick="PulseApp.closeImageModal()">
+    <div style="max-width: 90vw; max-height: 90vh; position: relative;">
+      <img id="lightbox-img" src="" alt="Expanded preview" style="max-width: 100%; max-height: 90vh; border-radius: 12px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.8);" />
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- TOAST NOTIFICATIONS CONTAINER                             -->
+  <!-- ========================================================= -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

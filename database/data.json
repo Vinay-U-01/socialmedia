@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "alex_dev",
+      "name": "Alex Rivera",
+      "role": "Full-Stack Intern",
+      "company": "FinTech Innovations",
+      "bio": "Crafting reactive web apps & microservices. Currently exploring distributed systems and design tokens. Coffee lover & open-source contributor ☕✨",
+      "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "San Francisco, CA",
+      "website": "https://alexrivera.dev",
+      "created_at": "2026-01-15T09:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "username": "sarah_ai",
+      "name": "Dr. Sarah Chen",
+      "role": "AI & ML Intern",
+      "company": "DeepNeural Labs",
+      "bio": "Working on multimodal embeddings and agentic workflows. Exploring LLM evaluation frameworks. Building the next generation of intelligent tools 🤖📊",
+      "avatar_url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&auto=format&fit=crop&q=80",
+      "location": "Seattle, WA",
+      "website": "https://sarahchen.ai",
+      "created_at": "2026-01-20T10:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "username": "marcus_ux",
+      "name": "Marcus Vance",
+      "role": "Product Design Intern",
+      "company": "Starlight Studio",
+      "bio": "Obsessed with micro-interactions, Figma design systems, accessibility & dark mode aesthetics. Pixel-perfect or nothing 🎨📐",
+      "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&auto=format&fit=crop&q=80",
+      "location": "New York, NY",
+      "website": "https://marcusvance.design",
+      "created_at": "2026-02-01T14:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "username": "elena_cloud",
+      "name": "Elena Rostova",
+      "role": "DevOps & Cloud Intern",
+      "company": "Kubernetes Edge",
+      "bio": "Automating cloud infrastructure, CI/CD pipelines & container orchestration. Terraform & Rust enthusiast ☁️⚡",
+      "avatar_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1200&auto=format&fit=crop&q=80",
+      "location": "Austin, TX",
+      "website": "https://elenacloud.tech",
+      "created_at": "2026-02-10T11:00:00.000Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "content": "🚀 Just finished setting up our team's end-to-end testing pipeline for our internship project! Reduced test execution time by 42% using parallel workers. Here is a snapshot of our architecture flow!",
+      "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&fit=crop&q=80",
+      "tag": "#Engineering",
+      "created_at": "2026-10-04T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "content": "Exciting day at DeepNeural! We just benchmarked our new sparse attention mechanism on real-world conversational data. Latency dropped to sub-50ms with zero degradation in reasoning score 🧠🔥 What's everyone building this week?",
+      "image_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop&q=80",
+      "tag": "#ArtificialIntelligence",
+      "created_at": "2026-10-04T05:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "content": "Dark mode vs light mode contrast ratios in design systems: always ensure you test with ambient room lighting! Finished our internship UI guidelines with 4.5:1 minimum contrast across all interactive states ✨ Check out the preview:",
+      "image_url": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=900&auto=format&fit=crop&q=80",
+      "tag": "#DesignSystem",
+      "created_at": "2026-10-03T14:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "user_id": 4,
+      "content": "First week deploying microservices to our staging cluster using ArgoCD and Helm charts. Infrastructure as Code makes reproducing environments an absolute breeze! 🛠️",
+      "image_url": null,
+      "tag": "#DevOps",
+      "created_at": "2026-10-03T04:00:00.000Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "post_id": 1,
+      "user_id": 2,
+      "content": "Huge speedup Alex! Are you using Jest or Vitest for the parallel runners?",
+      "created_at": "2026-10-04T08:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "post_id": 1,
+      "user_id": 1,
+      "content": "Thanks Sarah! We transitioned over to Vitest with native ES modules support. It cut startup time dramatically.",
+      "created_at": "2026-10-04T08:45:00.000Z"
+    },
+    {
+      "id": 3,
+      "post_id": 2,
+      "user_id": 3,
+      "content": "Sub-50ms is incredible for generative feedback loops! Can't wait to see this integrated into the product prototype.",
+      "created_at": "2026-10-04T06:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "post_id": 3,
+      "user_id": 1,
+      "content": "Love this attention to accessibility Marcus! Bookmarking this for our front-end component library.",
+      "created_at": "2026-10-03T16:00:00.000Z"
+    }
+  ],
+  "likes": [
+    { "id": 1, "post_id": 1, "user_id": 2, "created_at": "2026-10-04T08:30:00.000Z" },
+    { "id": 2, "post_id": 1, "user_id": 3, "created_at": "2026-10-04T08:35:00.000Z" },
+    { "id": 3, "post_id": 1, "user_id": 4, "created_at": "2026-10-04T08:40:00.000Z" },
+    { "id": 4, "post_id": 2, "user_id": 1, "created_at": "2026-10-04T06:15:00.000Z" },
+    { "id": 5, "post_id": 2, "user_id": 3, "created_at": "2026-10-04T06:20:00.000Z" },
+    { "id": 6, "post_id": 3, "user_id": 1, "created_at": "2026-10-03T17:00:00.000Z" },
+    { "id": 7, "post_id": 3, "user_id": 4, "created_at": "2026-10-03T17:05:00.000Z" },
+    { "id": 8, "post_id": 4, "user_id": 1, "created_at": "2026-10-03T09:00:00.000Z" }
+  ],
+  "followers": [
+    { "id": 1, "follower_id": 2, "following_id": 1, "created_at": "2026-02-01T12:00:00.000Z" },
+    { "id": 2, "follower_id": 3, "following_id": 1, "created_at": "2026-02-02T12:00:00.000Z" },
+    { "id": 3, "follower_id": 4, "following_id": 1, "created_at": "2026-02-03T12:00:00.000Z" },
+    { "id": 4, "follower_id": 1, "following_id": 2, "created_at": "2026-02-01T12:30:00.000Z" },
+    { "id": 5, "follower_id": 3, "following_id": 2, "created_at": "2026-02-04T12:00:00.000Z" },
+    { "id": 6, "follower_id": 1, "following_id": 3, "created_at": "2026-02-05T12:00:00.000Z" },
+    { "id": 7, "follower_id": 4, "following_id": 3, "created_at": "2026-02-06T12:00:00.000Z" },
+    { "id": 8, "follower_id": 1, "following_id": 4, "created_at": "2026-02-07T12:00:00.000Z" }
+  ]
+}

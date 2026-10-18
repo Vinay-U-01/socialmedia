@@ -1,0 +1,25 @@
+{
+  "name": "social-media-platform",
+  "version": "1.0.0",
+  "description": "Internship Task 2: Modern Mini Social Media Platform with User Profiles, Posts & Comments, and Like/Follow system.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "social-media",
+    "internship",
+    "express",
+    "html",
+    "css",
+    "javascript",
+    "sqlite"
+  ],
+  "author": "Internship Candidate",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
